@@ -1,0 +1,136 @@
+@import "../variables";
+
+.header {
+  position: relative;
+  border-bottom: 1px solid $gray-line;
+  padding: 40px 0 10px;
+
+  .container--high {
+    margin: 0 auto;
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .container {
+    display: flex;
+    width: 55%;
+
+    @media (max-width: 1050px) {
+      display: none;
+    }
+  }
+
+  .open {
+    display: flex;
+  }
+
+  &__left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media (max-width: 1050px) {
+      padding-top: 50px;
+      z-index: 100;
+      position: absolute;
+      top: -50px;
+      left: -50px;
+      width: 100%;
+      height: 100vh;
+      background-image: url(../../assets/img/header-bg.png);
+      flex-direction: column;
+      row-gap: 20px;
+    }
+  }
+
+  &__menu {
+    display: none;
+
+    @media (max-width: 1050px) {
+      display: block;
+      width: 40px;
+    }
+  }
+
+  &__logo__red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 5px;
+
+    @media (max-width: 1050px) {
+      display: none;
+    }
+
+    img {
+      margin-right: 25px;
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      letter-spacing: 1%;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    p {
+      color: #7b7b7b;
+    }
+  }
+
+  &__logo__white {
+    display: none;
+
+    @media (max-width: 1050px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__navigation {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 50px;
+    font-size: 22px;
+    font-weight: 700;
+
+    @media (max-width: 1050px) {
+      flex-direction: column;
+      align-items: start;
+      row-gap: 30px;
+      font-size: 32px;
+    }
+
+    a {
+      transition: all 0.1s;
+
+      @media (max-width: 1050px) {
+        color: white;
+      }
+    }
+    a:hover {
+      color: #c30303;
+    }
+  }
+
+  &__close {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 60px;
+
+    @media (max-width: 1050px) {
+      display: flex;
+    }
+  }
+}

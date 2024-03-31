@@ -1,0 +1,42 @@
+.search {
+  position: relative;
+  margin-right: 70px;
+
+  input {
+    padding: 8px 1px;
+    padding-left: 40px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    font-size: 18px;
+
+    &:focus {
+      padding-right: 10px;
+    }
+
+    &::placeholder {
+      color: #cc0000;
+      font-size: 15px;
+    }
+  }
+
+  img,
+  svg {
+    position: absolute;
+    top: 12px;
+
+    width: 20px;
+  }
+  img {
+    left: 12px;
+  }
+
+  svg {
+    right: 12px;
+    opacity: 0.7;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

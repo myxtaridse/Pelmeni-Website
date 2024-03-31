@@ -1,0 +1,92 @@
+[
+  {
+    "id": 0,
+    "imageUrl": "https://meat-expert.ru/files/uploads/obzor/_2023/30/01.jpg",
+    "name": "Пельмени с мясом",
+    "types": [0, 1],
+    "sizes": [150, 250, 350],
+    "price": 270,
+    "category": [0, 1],
+    "rating": 0
+  },
+  {
+    "id": 1,
+    "imageUrl": "https://st2.stpulscen.ru/images/product/417/811/646_big.jpg",
+    "name": "Вареники с картофелем",
+    "types": [0, 1],
+    "sizes": [150, 250, 350],
+    "price": 195,
+    "category": [0, 2],
+    "rating": 0
+  },
+  {
+    "id": 2,
+    "imageUrl": "https://pic.rutubelist.ru/video/96/6b/966bbf14a07c3db8af83be5f1315d7b8.jpg",
+    "name": "Цзяо-цзы",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 340,
+    "category": [0, 1, 4],
+    "rating": 0
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://karamelcafe.ru/wp-content/uploads/a/0/1/a01810dfb8cd5a4695b7b8b22bd9af7a.jpeg",
+    "name": "Хинкали",
+    "types": [0, 1],
+    "sizes": [150, 250, 350],
+    "price": 450,
+    "category": [0, 1, 4],
+    "rating": 0
+  },
+  {
+    "id": 4,
+    "imageUrl": "https://glamours.name/uploads/posts/2023-08/1692441376_glamours-name-p-manti-yeda-krasivo-1.jpg",
+    "name": "Манты",
+    "types": [0, 1],
+    "sizes": [150, 250, 350],
+    "price": 340,
+    "category": [0, 1, 4],
+    "rating": 0
+  },
+  {
+    "id": 5,
+    "imageUrl": "https://uzbek-culinar.ru/wp-content/uploads/b/0/6/b06d323c11ec47b4f7c5402157f6a074.jpeg",
+    "name": "Равиоли с мясом",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 290,
+    "category": [0, 1],
+    "rating": 0
+  },
+  {
+    "id": 6,
+    "imageUrl": "https://static.tildacdn.com/stor6337-6635-4635-b435-353465646239/66743472.jpg",
+    "name": "Гёдза",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 400,
+    "category": [0, 1],
+    "rating": 0
+  },
+  {
+    "id": 7,
+    "imageUrl": "https://s00.yaplakal.com/pics/pics_original/9/2/2/17999229.jpg",
+    "name": "Итальянские Тортеллини",
+    "types": [0, 1],
+    "sizes": [150, 250, 350],
+    "price": 450,
+    "category": [0, 1],
+    "rating": 0
+  },
+  {
+    "id": 8,
+    "imageUrl": "https://traveltimes.ru/wp-content/uploads/2022/04/knedl.jpg",
+    "name": "Клецки",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": [0, 2, 3],
+    "rating": 0
+  }
+]
