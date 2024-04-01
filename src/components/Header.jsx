@@ -12,7 +12,7 @@ import Search from "./Search";
 
 //import Categories from "./Categories";
 
-function Header({ searchValue, setSearchValue }) {
+function Header() {
   const [toggle, setToggle] = useState(false);
 
   const toggleOnClick = () => {
@@ -65,7 +65,7 @@ function Header({ searchValue, setSearchValue }) {
             </div>
           </div>
         </div>
-        <Search searchValue={searchValue} setSearchValue={setSearchValue} />
+        <Search />
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
             <span>520 ₽</span>

@@ -1,9 +1,11 @@
 import React from "react";
+import { SearchContext } from "../../App";
 
 import searchLogo from "../../assets/img/search-line.svg";
 import style from "./Search.module.scss";
 
-function Search({ searchValue, setSearchValue }) {
+function Search() {
+  const { searchValue, setSearchValue } = React.useContext(SearchContext);
   return (
     <div className={style.search}>
       <input
