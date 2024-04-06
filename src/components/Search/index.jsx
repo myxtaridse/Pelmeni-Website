@@ -3,21 +3,64 @@ import { SearchContext } from "../../App";
 
 import searchLogo from "../../assets/img/search-line.svg";
 import style from "./Search.module.scss";
+import debounce from "lodash.debounce";
+// import debounce from "lodash.debounce";
+
+// const debounceTimeOut = debounce(() => {
+//   //данный способ оптимизурует работу сайта,
+//   //чтобы не было с каждой буквы запрос на бэк
+//   console.log("vbhcasd");
+// }, 1000);
 
 function Search() {
-  const { searchValue, setSearchValue } = React.useContext(SearchContext);
+  const [value, setValue] = React.useState(""); //отвечает за изображение из инпута значения
+  const { setSearchValue } = React.useContext(SearchContext); //делает поиск, выводит запрос в бэк для поиска определенного товара
+
+  const inputRef = React.useRef();
+  const onClickClear = () => {
+    setSearchValue("");
+    setValue(""); //приводит инпут в пустую строку, стерает все
+    //document.querySelector("input").focus();
+
+    //оставляет фокус на инпуте, даже когда нажали крестик, чтоюы потом
+    // можно было продолжить печатать без наведения мыши на инпут
+    //но это js способ, что критично, поэтому в обращении к ссылкам DOM-элементов
+    //лучше использовать хук useRef
+    inputRef.current.focus();
+    //оставляет фокус на инпуте, даже когда нажали крестик, чтоюы потом
+    //console.log(inputRef.current); //current возвращает ссылку на элемент, к которой прикрепляется действие, т.о. .focus
+  };
+
+  //сокращение запросов на бэк, когда ввел хотя бы все словр не 1, за секунду
+  //что не перегружает работу сайта
+  //из-за множество запросов бэк, откуда берем товары, может заблочить, поскольку перегруз
+
+  const updateSearch = React.useCallback(
+    //вызывает функцию, при изменении состояния, и возварщает ее
+    debounce((str) => {
+      setSearchValue(str); //совершает отложенное выполнение функции, через секунду
+    }, 1000),
+    []
+  );
+
+  const onChangeInput = (event) => {
+    setValue(event.target.value); //вкладываем значение введенное в инпут
+    updateSearch(event.target.value); //вкладываем значение введенное в инпут для функции, которая совершит запрос через 1 сек
+  };
+
   return (
     <div className={style.search}>
       <input
-        value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
+        ref={inputRef}
+        value={value}
+        onChange={onChangeInput}
         placeholder="Поиск..."
       />
       <img src={searchLogo} alt="Search Logo" />
 
-      {searchValue && (
+      {value && (
         <svg
-          onClick={() => setSearchValue("")}
+          onClick={onClickClear}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="grey"

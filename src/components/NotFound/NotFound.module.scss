@@ -1,9 +1,24 @@
 .root {
   padding: 100px;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
 
   h1 {
     color: rgb(86, 84, 84);
-    margin-bottom: 70px;
+  }
+
+  button {
+    color: white;
+    background-color: #ab403f;
+    font-size: 18px;
+    padding: 18px 20px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
   }
 }

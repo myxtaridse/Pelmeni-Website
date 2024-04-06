@@ -2,6 +2,9 @@
 //import pelmenis from "../assets/pelmenis.json";
 //import PelmeniBlock from "./Pelmeni-Block";
 
+// import { useSelector, useDispatch } from "react-redux";
+// import { decrement, increment } from "./redux/slices/counterSlice";
+
 function Categories({ value, onClickCategory }) {
   // console.log(value);
 
@@ -11,6 +14,9 @@ function Categories({ value, onClickCategory }) {
   // const onClickCategory = (index) => {
   //   setActive(index);
   // };
+
+  // const value = useSelector((state) => state.counter.value);
+  // const dispatch = useDispatch();
 
   return (
     <div className="categories">

@@ -32,8 +32,16 @@ function Header() {
           <div className="header__left">
             <Link to="/">
               <div className="header__logo__red">
-                <img width="60" src={LogoSvgRed} alt="Pelmeni logo" />
-                <img width="110" src={LogoTextSvgRed} alt="Pelmeni logo" />
+                <img
+                  src={LogoSvgRed}
+                  alt="Pelmeni logo"
+                  className="logo__red"
+                />
+                <img
+                  src={LogoTextSvgRed}
+                  alt="Pelmeni logo"
+                  className="logo__red__text"
+                />
               </div>
               <div className="header__logo__white">
                 <img width="100" src={LogoSvgWhite} alt="Pelmeni logo" />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import ReactDOM from "react-dom";
 import ReactPaginate from "react-paginate";
 
@@ -12,7 +12,6 @@ const Pagination = ({ onChangePage }) => {
         breakLabel="..."
         nextLabel=">"
         onPageChange={(event) => {
-          console.log(event);
           onChangePage(event.selected + 1);
         }}
         pageRangeDisplayed={4}

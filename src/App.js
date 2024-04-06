@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
 // import "./App.css";
 import "./scss/app.scss";
 
@@ -6,8 +7,6 @@ import Header from "./components/Header.jsx";
 import Home from "./pages/Home";
 import NoName from "./pages/NotFound";
 import Cart from "./pages/Cart";
-
-import { Routes, Route } from "react-router-dom";
 
 export const SearchContext = React.createContext();
 
