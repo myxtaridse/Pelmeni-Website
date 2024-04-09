@@ -1,12 +1,28 @@
 import { Link } from "react-router-dom";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import LogoCart from "../assets/img/shopping-cart-line.svg";
-import pel from "../assets/img/pel.jpg";
-import plus from "../assets/img/plus.svg";
-import minus from "../assets/img/minus.svg";
+
+import CartItem from "../components/CartItem";
+import { clearCartValue } from "../redux/slices/cartSlice";
+import CartEmpty from "../components/CartEmpty";
 
 function CartBlock() {
+  const { items, totalPrice } = useSelector((state) => state.cartSlice);
+  const dispatch = useDispatch();
+
+  const clearCart = () => {
+    if (window.confirm("Вы действительно хотите очистить корзину?")) {
+      dispatch(clearCartValue());
+    }
+  };
+  const sumItemCount = items.reduce((sum, item) => sum + item.count, 0);
+
+  if (!totalPrice) {
+    return <CartEmpty />;
+  }
+
   return (
     <div className="container container--cart">
       <div className="cart">
@@ -15,7 +31,7 @@ function CartBlock() {
             <img width={40} src={LogoCart} alt="Cart Logo"></img>
             КОРЗИНА
           </h2>
-          <div className="cart__clear">
+          <div onClick={clearCart} className="cart__clear">
             <svg
               width="20"
               height="20"
@@ -57,135 +73,17 @@ function CartBlock() {
           </div>
         </div>
         <div className="cart__items">
-          <div className="content__cart">
-            <div>
-              <h2>Вареники с вишней</h2>
-              <h4>без бульона, 250гр.</h4>
-            </div>
-            <div>
-              <img width={200} src={pel} alt="Pel"></img>
-            </div>
-            <div className="cart__quantity">
-              <img width={20} src={minus} alt="minus" />
-              2
-              <img width={20} src={plus} alt="plus" />
-            </div>
-            <div className="cart__price">
-              270 <b> ₽</b>
-            </div>
-          </div>
-          <div className="content__cart">
-            <div>
-              <h2>Вареники с вишней</h2>
-              <h4>без бульона, 250гр.</h4>
-            </div>
-            <div>
-              <img width={200} src={pel} alt="Pel"></img>
-            </div>
-            <div className="cart__quantity">
-              <img width={20} src={minus} alt="minus" />
-              2
-              <img width={20} src={plus} alt="plus" />
-            </div>
-            <div className="cart__price">
-              270 <b> ₽</b>
-            </div>
-          </div>
-          <div className="content__cart">
-            <div>
-              <h2>Вареники с вишней</h2>
-              <h4>без бульона, 250гр.</h4>
-            </div>
-            <div>
-              <img width={200} src={pel} alt="Pel"></img>
-            </div>
-            <div className="cart__quantity">
-              <img width={20} src={minus} alt="minus" />
-              2
-              <img width={20} src={plus} alt="plus" />
-            </div>
-            <div className="cart__price">
-              270 <b> ₽</b>
-            </div>
-          </div>
-          <div className="content__cart">
-            <div>
-              <h2>Вареники с вишней</h2>
-              <h4>без бульона, 250гр.</h4>
-            </div>
-            <div>
-              <img width={200} src={pel} alt="Pel"></img>
-            </div>
-            <div className="cart__quantity">
-              <img width={20} src={minus} alt="minus" />
-              2
-              <img width={20} src={plus} alt="plus" />
-            </div>
-            <div className="cart__price">
-              270 <b> ₽</b>
-            </div>
-          </div>
-          <div className="content__cart">
-            <div>
-              <h2>Вареники с вишней</h2>
-              <h4>без бульона, 250гр.</h4>
-            </div>
-            <div>
-              <img width={200} src={pel} alt="Pel"></img>
-            </div>
-            <div className="cart__quantity">
-              <img width={20} src={minus} alt="minus" />
-              2
-              <img width={20} src={plus} alt="plus" />
-            </div>
-            <div className="cart__price">
-              270 <b> ₽</b>
-            </div>
-          </div>
-          <div className="content__cart">
-            <div>
-              <h2>Вареники с вишней</h2>
-              <h4>без бульона, 250гр.</h4>
-            </div>
-            <div>
-              <img width={200} src={pel} alt="Pel"></img>
-            </div>
-            <div className="cart__quantity">
-              <img width={20} src={minus} alt="minus" />
-              2
-              <img width={20} src={plus} alt="plus" />
-            </div>
-            <div className="cart__price">
-              270 <b> ₽</b>
-            </div>
-          </div>
-          <div className="content__cart">
-            <div>
-              <h2>Вареники с вишней</h2>
-              <h4>без бульона, 250гр.</h4>
-            </div>
-            <div>
-              <img width={200} src={pel} alt="Pel"></img>
-            </div>
-            <div className="cart__quantity">
-              <img width={20} src={minus} alt="minus" />
-              2
-              <img width={20} src={plus} alt="plus" />
-            </div>
-            <div className="cart__price">
-              270 <b> ₽</b>
-            </div>
-          </div>
+          {items.map((item) => (
+            <CartItem key={item.id} {...item} />
+          ))}
         </div>
         <div className="cart__bottom">
           <div className="cart__bottom-details">
             <span>
-              {" "}
-              Всего: <b> шт.</b>{" "}
+              Всего: <b>{sumItemCount} шт.</b>
             </span>
             <span>
-              {" "}
-              Сумма заказа: <b> ₽</b>{" "}
+              Сумма заказа: <b>{totalPrice} ₽</b>
             </span>
           </div>
           <div className="cart__bottom-buttons">

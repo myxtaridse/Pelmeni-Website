@@ -3,7 +3,7 @@ import Axios from "axios";
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
 
-import { listSort } from "../components/Sort";
+import { list } from "../components/Sort";
 import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import PelmeniBlock from "../components/Pelmeni-Block";
@@ -41,6 +41,29 @@ const Home = ({ searchValue }) => {
     dispatch(setCurrentPage(number));
   };
 
+  //отображение полного URL-адреса всегда, но не в первый рендер, поскольку
+  //клиент сайта еще не задавал параметры сам
+  const isMounted = React.useRef(false);
+
+  // до того, как выполнится useEffect - заранее проверяем нужно ли делать поиск через URL
+  const isAxios = React.useRef(false); // необходим один запрос
+  //либо по умолчанию, либо по уже заданным ранее категориям - фильтрам
+
+  const axiosProducts = () => {
+    const category = categoryId > 0 ? `category=${categoryId}` : "";
+    const sort = sortType.replace("-", "");
+    const sortOrder = sortType.includes("-") ? "asc" : "desc";
+    const search = searchValue ? `search=${searchValue}` : "";
+
+    Axios.get(
+      `https://66028e549d7276a755538691.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort}&order=${sortOrder}&${search}`
+    ).then((res) => {
+      dispatch(setItems(res.data));
+      dispatch(setIsLoading(false));
+    });
+    setIsLoading(true);
+  };
+
   //const [items, setItems] = React.useState([]);
   // const [isLoading, setIsLoading] = React.useState(true);
 
@@ -51,23 +74,41 @@ const Home = ({ searchValue }) => {
   // });
   // const [currentPage, setCurrentPage] = React.useState(1);
 
+  //вшивание параметров в адресную строчку URL
+  //если пришли какие-то параемтры, должны превратить в одну целую строчку
   React.useEffect(() => {
+    if (isMounted.current) {
+      const queryString = qs.stringify({
+        sortType,
+        categoryId,
+        currentPage,
+      });
+      navigate(`?${queryString}`); //выводится строчка с параметрами
+    }
+    isMounted.current = true;
+    //первый раз, когда чел только зашел на сайт, будет false чтобы не прописались параметры в адресную строку,
+    // в последующем будет true, что разрешит прописывать в адресную строку параметры
+  }, [categoryId, sortType, currentPage]);
+
+  React.useEffect(() => {
+    //когда идет обновление страницы, параметры остаются
+    //идет сохранение параметром в редуксе
+    //при обновлении страницы, параметры выбранные ранее сохраняются
     if (window.location.search) {
       const params = qs.parse(window.location.search.substring(1));
-      console.log(params);
-      const sort = listSort.find((obj) => obj.sortProperty === params.sortType);
+      const sort = list.find((obj) => obj.sortProperty === params.sortType);
       dispatch(setFilter({ ...params, sort }));
+      isAxios.current = true; //если был диспатч с новыми изменениями, тогда идет запрос с URL уже с обновленными параметрами
     }
   }, []);
 
   React.useEffect(() => {
-    setIsLoading(true);
-
-    const category = categoryId > 0 ? `category=${categoryId}` : "";
-    //если выбранная категория не "Все" - добавляется номер категории от 1 до n - categories.length
-    const sort = sortType.replace("-", ""); //удаляет минус, чтобы не было ошибки
-    const sortOrder = sortType.includes("-") ? "asc" : "desc"; //проверяет наличие минуса, чтобы выбрать
-    const search = searchValue ? `search=${searchValue}` : ""; //вводимое слово если есть в инпуте, тогда поиск в запросе по наименованию
+    window.scrollTo(0, 0);
+    // const category = categoryId > 0 ? `category=${categoryId}` : "";
+    // //если выбранная категория не "Все" - добавляется номер категории от 1 до n - categories.length
+    // const sort = sortType.replace("-", ""); //удаляет минус, чтобы не было ошибки
+    // const sortOrder = sortType.includes("-") ? "asc" : "desc"; //проверяет наличие минуса, чтобы выбрать
+    // const search = searchValue ? `search=${searchValue}` : ""; //вводимое слово если есть в инпуте, тогда поиск в запросе по наименованию
 
     // fetch(
     //   `https://66028e549d7276a755538691.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort}&order=${sortOrder}&${search}`
@@ -80,27 +121,20 @@ const Home = ({ searchValue }) => {
     //     dispatch(setIsLoading(false)); //два действия нужны - это асинхронная функция, пока рендерятся пиццы, выставляется set(false)
     //   });
 
-    Axios.get(
-      `https://66028e549d7276a755538691.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort}&order=${sortOrder}&${search}`
-    ).then((res) => {
-      dispatch(setItems(res.data));
-      dispatch(setIsLoading(false));
-    });
+    // Axios.get(
+    //   `https://66028e549d7276a755538691.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort}&order=${sortOrder}&${search}`
+    // ).then((res) => {
+    //   dispatch(setItems(res.data));
+    //   dispatch(setIsLoading(false));
+    // });
 
-    window.scrollTo(0, 0);
+    if (!isAxios.current) {
+      //если не было запроса по уже ранее указанным параметрам
+      //вызывается функция с параметрами по умолчанию
+      axiosProducts();
+    }
+    isAxios.current = false;
   }, [categoryId, sortType, searchValue, currentPage]); //при изменении данных элементов, запрос отправляется на бэк
-
-  //вшивание параметров в адресную строчку URL
-  //если пришли какие-то параемтры, должны превратить в одну целую строчку
-  React.useEffect(() => {
-    const queryString = qs.stringify({
-      sortType,
-      categoryId,
-      currentPage,
-    });
-    console.log(queryString); //выводится строчка с параметрами
-    navigate(`?${queryString}`);
-  }, [categoryId, sortType, currentPage]);
 
   const skelets = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
   // const products = items
@@ -127,6 +161,7 @@ const Home = ({ searchValue }) => {
       <h2 className="content__title">Все пельмени</h2>
       <div className="content__items">{isLoading ? skelets : products}</div>
       <Pagination
+        currentPage={currentPage}
         onChangePage={onChangePageNumber} //передается индекс выбранной страницы,
         //передается значению currentPage, который вставляется в запрос page={currentPage}
       />

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import LogoSvgRed from "../assets/img/logo-red.svg";
 import LogoTextSvgRed from "../assets/img/logo-text-red.svg";
@@ -18,6 +19,12 @@ function Header() {
   const toggleOnClick = () => {
     setToggle(!toggle);
   };
+
+  const items = useSelector((state) => state.cartSlice.items);
+  const totalPrice = useSelector((state) => state.cartSlice.totalPrice);
+
+  //высчитывает кол-во продуктов в корзину
+  const sumItemCount = items.reduce((sum, item) => sum + item.count, 0);
 
   return (
     <div className="header">
@@ -76,7 +83,7 @@ function Header() {
         <Search />
         <div className="header__cart">
           <Link to="/cart" className="button button--cart">
-            <span>520 ₽</span>
+            <span>{totalPrice} ₽</span>
             <div className="button__delimiter"></div>
             <svg
               width="18"
@@ -107,7 +114,7 @@ function Header() {
                 strokeLinejoin="round"
               />
             </svg>
-            <span>3</span>
+            <span>{sumItemCount}</span>
           </Link>
         </div>
       </div>

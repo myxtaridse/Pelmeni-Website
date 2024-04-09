@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setSortType } from "../redux/slices/filterSlice";
 
-export const listSort = [
+export const list = [
   { name: "популярности ↓", sortProperty: "rating" },
   { name: "популярности ↑", sortProperty: "-rating" },
   { name: "цене ↓", sortProperty: "price" },
@@ -13,7 +13,10 @@ export const listSort = [
 ];
 
 function Sort() {
-  const [open, setOpen] = useState(false); //изначально окно закрыто
+  const sortRef = React.useRef(); //нужна ссылка на sort-элемент
+  //чтобы когда вне popup кликаем на поле, закрывалось окно
+
+  const [open, setOpen] = React.useState(false); //изначально окно закрыто
 
   const dispatch = useDispatch();
   const sort = useSelector((state) => state.filterSlice.sort);
@@ -24,8 +27,24 @@ function Sort() {
     setOpen(false); //чтобы при выборе сортировочного компонента, закрывалось окно
   };
 
+  React.useEffect(() => {
+    //sortmount - рендер страницы
+    const handleClickOutside = (event) => {
+      if (!event.composedPath().includes(sortRef.current)) {
+        setOpen(false);
+        console.log("закрыто");
+      }
+    };
+    document.body.addEventListener("click", handleClickOutside);
+
+    // Когда ухожу со страницы слушатель удаляется, дабы не работал на другой странице - sortunmount
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="sort">
+    <div className="sort" ref={sortRef}>
       <div className="sort__label">
         <svg
           width="10"
@@ -49,7 +68,7 @@ function Sort() {
       {open && (
         <div className="sort__popup">
           <ul>
-            {listSort.map((obj, i) => {
+            {list.map((obj, i) => {
               return (
                 <li
                   key={i}

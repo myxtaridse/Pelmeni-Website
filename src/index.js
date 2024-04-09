@@ -10,13 +10,13 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Provider
-        store={store} //содружество React с Redux Toolkit через Redux React
-      >
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </React.StrictMode>
+  <BrowserRouter>
+    <Provider
+      store={store} //содружество React с Redux Toolkit через Redux React
+    >
+      <App />
+    </Provider>
+  </BrowserRouter>
 );
+
+//</React.StrictMode> - все было в этот тег оформлено - строгий режим для кода

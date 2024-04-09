@@ -1,7 +1,12 @@
+import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addCartValue } from "../redux/slices/cartSlice";
 
-function PelmeniBlock({ name, price, imageUrl, sizes, types }) {
+function PelmeniBlock({ id, name, price, imageUrl, sizes, types }) {
   const typesNames = ["без бульона", "с бульоном"];
+
+  const dispatch = useDispatch();
 
   const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
@@ -10,6 +15,19 @@ function PelmeniBlock({ name, price, imageUrl, sizes, types }) {
 
   const updateBtn = () => {
     setCount(count + 1);
+  };
+
+  const onClickAdd = () => {
+    updateBtn();
+    const item = {
+      id,
+      name,
+      price,
+      imageUrl,
+      sizes: sizes[activeSize],
+      types: typesNames[activeType],
+    };
+    dispatch(addCartValue(item));
   };
 
   return (
@@ -47,7 +65,7 @@ function PelmeniBlock({ name, price, imageUrl, sizes, types }) {
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
         <button
-          onClick={updateBtn}
+          onClick={onClickAdd}
           className="button button--outline button--add"
         >
           <svg

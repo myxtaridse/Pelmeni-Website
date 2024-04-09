@@ -1,6 +1,7 @@
 .root {
   display: flex;
   column-gap: 5px;
+
   li {
     display: inline-block;
 
@@ -16,7 +17,6 @@
       border-radius: 50%;
       font-size: 14px;
       background-color: #fff;
-      cursor: pointer;
 
       &:hover {
         color: white;
