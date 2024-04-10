@@ -1,7 +1,8 @@
 import React from "react";
-import Axios from "axios";
+
 import qs from "qs";
 import { useNavigate } from "react-router-dom";
+import NoName from "./NotFound";
 
 import { list } from "../components/Sort";
 import Categories from "../components/Categories";
@@ -15,18 +16,15 @@ import {
   setCurrentPage,
   setFilter,
 } from "../redux/slices/filterSlice";
-import { setItems, setIsLoading } from "../redux/slices/itemsSlice";
+import { fetchProducts } from "../redux/slices/itemsSlice";
 
 const Home = ({ searchValue }) => {
   const navigate = useNavigate();
-
-  const categoryId = useSelector((state) => state.filterSlice.categoryId); //c помощью данного хука можно вытащить стейт
+  //const [isLoading, setIsLoading] = React.useState(true);
+  const { categoryId, currentPage } = useSelector((state) => state.filterSlice); //c помощью данного хука можно вытащить стейт
   const sortType = useSelector((state) => state.filterSlice.sort.sortProperty);
 
-  const items = useSelector((state) => state.itemsSlice.items);
-  const isLoading = useSelector((state) => state.itemsSlice.isLoading);
-
-  const currentPage = useSelector((state) => state.filterSlice.currentPage);
+  const { items, webStatus } = useSelector((state) => state.itemsSlice);
   // useSelector - хранит в себе стейт
 
   const dispatch = useDispatch();
@@ -50,22 +48,62 @@ const Home = ({ searchValue }) => {
   //либо по умолчанию, либо по уже заданным ранее категориям - фильтрам
 
   const axiosProducts = () => {
+    //await - не умеет работать без async, то есть где он используется в главной функции, данная функция должна быть асинхронна
     const category = categoryId > 0 ? `category=${categoryId}` : "";
     const sort = sortType.replace("-", "");
     const sortOrder = sortType.includes("-") ? "asc" : "desc";
     const search = searchValue ? `search=${searchValue}` : "";
 
-    Axios.get(
-      `https://66028e549d7276a755538691.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort}&order=${sortOrder}&${search}`
-    ).then((res) => {
-      dispatch(setItems(res.data));
-      dispatch(setIsLoading(false));
-    });
-    setIsLoading(true);
+    // await Axios.get(
+    //   //await - превращает функцию в синхронный код, чтобы вначале выполнился fetch-запрос
+    //   // а потом остальное - скроллинг, завершение лоадинга
+    //   `https://66028e549d7276a755538691.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort}&order=${sortOrder}&${search}`
+    // ).then((res) => {
+    //   dispatch(setItems(res.data));
+    //   dispatch(setIsLoading(false));
+    //   console.log("раньше"); //синхронный запрос - по очереди
+    // });
+
+    // Отлавливание ошибок с бэка и в самом JS-коде. Функция применяемая JS
+    // try {
+    //   //можно сократить код-запрос
+    //   // const res = await Axios.get(
+    //   //   `https://66028e549d7276a755538691.mockapi.io/items?page=${currentPage}&limit=4&${category}&sortBy=${sort}&order=${sortOrder}&${search}`
+    //   // );
+    //   dispatch(
+    //     fetchProducts({
+    //       category,
+    //       sort,
+    //       sortOrder,
+    //       search,
+    //       currentPage,
+    //     })
+    //   );
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    //убрали try, catch и finally поскольку теперь все состояния в redux
+
+    //finally {
+    //работает и при удачном выполнении запроса и при ошибке
+    // и там и там нам необходимо отключить скелетон
+    //setIsLoading(false);
+    //}
+
+    dispatch(
+      fetchProducts({
+        category,
+        sort,
+        sortOrder,
+        search,
+        currentPage,
+      })
+    );
+
+    window.scrollTo(0, 0);
   };
 
   //const [items, setItems] = React.useState([]);
-  // const [isLoading, setIsLoading] = React.useState(true);
 
   // const [categoryId, setCategoryId] = React.useState(0);
   // const [sortType, setSortType] = React.useState({
@@ -103,7 +141,7 @@ const Home = ({ searchValue }) => {
   }, []);
 
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    //setIsLoading(true);
     // const category = categoryId > 0 ? `category=${categoryId}` : "";
     // //если выбранная категория не "Все" - добавляется номер категории от 1 до n - categories.length
     // const sort = sortType.replace("-", ""); //удаляет минус, чтобы не было ошибки
@@ -149,6 +187,10 @@ const Home = ({ searchValue }) => {
 
   const products = items.map((obj) => <PelmeniBlock key={obj.id} {...obj} />);
 
+  if (webStatus === "error") {
+    return <NoName />;
+  }
+
   return (
     <>
       <div className="content__top">
@@ -159,7 +201,9 @@ const Home = ({ searchValue }) => {
         <Sort />
       </div>
       <h2 className="content__title">Все пельмени</h2>
-      <div className="content__items">{isLoading ? skelets : products}</div>
+      <div className="content__items">
+        {webStatus === "loading" ? skelets : products}
+      </div>
       <Pagination
         currentPage={currentPage}
         onChangePage={onChangePageNumber} //передается индекс выбранной страницы,
