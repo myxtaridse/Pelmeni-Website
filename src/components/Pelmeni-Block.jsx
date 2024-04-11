@@ -1,4 +1,3 @@
-import { type } from "@testing-library/user-event/dist/type";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCartValue } from "../redux/slices/cartSlice";

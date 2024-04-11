@@ -22,25 +22,27 @@ const CartItem = ({ id, name, price, count, sizes, imageUrl, types }) => {
   };
 
   return (
-    <div className="content__cart">
-      <div className="cart__title">
-        <h2>{name}</h2>
-        <h4>
-          {types}, {sizes}гр.
-        </h4>
+    <div className="cart__item">
+      <div className="cart__item__left">
+        <div className="cart__item__title">
+          <h2>{name}</h2>
+          <h4>
+            {types}, {sizes}гр.
+          </h4>
+        </div>
+        <div className="cart__item__img">
+          <img width={200} src={imageUrl} alt="Pel"></img>
+        </div>
       </div>
-      <div>
-        <img width={200} src={imageUrl} alt="Pel"></img>
-      </div>
-      <div className="cart__quantity">
+      <div className="cart__item__quantity">
         <img onClick={minusItemClick} width={20} src={minus} alt="minus" />
         {count}
         <img onClick={plusItemClick} width={20} src={plus} alt="plus" />
       </div>
-      <div className="cart__price">
+      <div className="cart__item__price">
         {price * count} <b> ₽</b>
       </div>
-      <div onClick={removeItemClick} className="cart__close">
+      <div onClick={removeItemClick} className="cart__item__close">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

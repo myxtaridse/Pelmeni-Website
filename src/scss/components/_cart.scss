@@ -1,0 +1,268 @@
+@import "../variables";
+
+.cart {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__items {
+      padding: 60px 0;
+    }
+  }
+
+  .content__title {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    color: #cc0000;
+    font-weight: 800;
+
+    @media (max-width: 1300px) {
+      font-size: 26px;
+    }
+
+    img {
+      margin-right: 10px;
+      @media (max-width: 1200px) {
+        width: 30px;
+      }
+    }
+  }
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      margin-left: 7px;
+      color: #b6b6b6;
+      font-size: 18px;
+      @media (max-width: 1200px) {
+        font-size: 14px;
+      }
+    }
+
+    svg {
+      @media (max-width: 1200px) {
+        width: 15px;
+      }
+    }
+
+    span,
+    svg,
+    path {
+      transition: all $duration ease-in-out;
+    }
+
+    &:hover {
+      svg {
+        path {
+          stroke: darken($color: #b6b6b6, $amount: 50);
+        }
+      }
+      span {
+        color: darken($color: #b6b6b6, $amount: 50);
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+    padding: 40px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(225, 221, 221);
+
+    &__left {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 1000px) {
+        flex-direction: column-reverse;
+        row-gap: 10px;
+        align-items: start;
+      }
+    }
+
+    &__img {
+      width: 200px;
+
+      img {
+        width: 100%;
+        border-radius: 10%;
+      }
+
+      @media (max-width: 1400px) {
+        width: 180px;
+      }
+      @media (max-width: 1200px) {
+        width: 140px;
+      }
+    }
+
+    &__title {
+      width: 400px;
+      @media (max-width: 1400px) {
+        width: 300px;
+      }
+      @media (max-width: 900px) {
+        width: 240px;
+      }
+      @media (max-width: 600px) {
+        width: 180px;
+      }
+
+      h2 {
+        font-size: 32px;
+        font-weight: 600;
+        @media (max-width: 1400px) {
+          font-size: 28px;
+        }
+        @media (max-width: 1200px) {
+          font-size: 24px;
+        }
+      }
+
+      h4 {
+        margin-top: 7px;
+        font-weight: 400;
+        color: darkgray;
+      }
+    }
+
+    &__price {
+      font-size: 34px;
+      @media (max-width: 1400px) {
+        font-size: 28px;
+      }
+      @media (max-width: 1200px) {
+        font-size: 24px;
+      }
+    }
+
+    &__quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 8px;
+      font-size: 26px;
+      @media (max-width: 1200px) {
+        font-size: 22px;
+      }
+
+      img {
+        cursor: pointer;
+        width: 20px;
+        @media (max-width: 1200px) {
+          width: 14px;
+        }
+      }
+    }
+
+    &__close {
+      border: 1px solid transparent;
+      border-radius: 50%;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.4s;
+      svg {
+        width: 15px;
+        color: rgb(55, 52, 52);
+      }
+    }
+
+    &__close:hover {
+      border: 1px solid rgb(93, 91, 91);
+      padding: 6px;
+    }
+  }
+
+  &__bottom {
+    margin: 50px 0;
+
+    &-details {
+      display: flex;
+      justify-content: space-between;
+
+      span {
+        font-size: 22px;
+        @media (max-width: 1300px) {
+          font-size: 18px;
+        }
+
+        &:last-of-type {
+          b {
+            color: $orange;
+          }
+        }
+      }
+    }
+
+    &-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+
+      @media (max-width: 600px) {
+        flex-direction: column-reverse;
+        row-gap: 20px;
+      }
+
+      .go-back-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 25px;
+
+        border-color: darken($color: $gray-line, $amount: 10);
+
+        span {
+          color: darken($color: $gray-line, $amount: 20);
+          font-weight: 600;
+          font-size: 20px;
+          @media (max-width: 1350px) {
+            font-size: 17px;
+          }
+        }
+
+        &:hover {
+          background-color: darken($color: $gray-line, $amount: 90);
+          border-color: darken($color: $gray-line, $amount: 90);
+
+          span {
+            color: $gray-line;
+          }
+        }
+
+        svg {
+          margin-right: 12px;
+          width: 15px;
+          @media (max-width: 1350px) {
+            width: 12px;
+          }
+          path {
+            fill: transparent;
+            stroke-width: 2;
+          }
+        }
+      }
+
+      .pay-btn {
+        font-size: 20px;
+        font-weight: 600;
+        padding: 16px 32px;
+        @media (max-width: 1350px) {
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}
