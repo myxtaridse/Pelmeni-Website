@@ -1,92 +1,177 @@
 [
   {
-    "id": 0,
+    "id": "0",
     "imageUrl": "https://meat-expert.ru/files/uploads/obzor/_2023/30/01.jpg",
     "name": "Пельмени с мясом",
     "types": [0, 1],
     "sizes": [150, 250, 350],
     "price": 270,
-    "category": [0, 1],
-    "rating": 0
+    "category": 1,
+    "rating": 0,
+    "composition": "говяжий фарш, свиной фарш, лук репчатый, соль, холодная вода, яйца, пшеничная мука, черный молотый перец, чеснок, растительное масло"
   },
   {
-    "id": 1,
-    "imageUrl": "https://st2.stpulscen.ru/images/product/417/811/646_big.jpg",
+    "id": "1",
+    "imageUrl": "https://sun9-31.userapi.com/impg/HwDIZOZkkgcs6i2YvxnziAxO80CQIXHKT8-Qjg/YsDEcmbia84.jpg?size=1152x832&quality=95&sign=b765e9d8aba08610e552628e319167c8&type=album",
     "name": "Вареники с картофелем",
     "types": [0, 1],
     "sizes": [150, 250, 350],
     "price": 195,
-    "category": [0, 2],
-    "rating": 0
+    "category": 2,
+    "rating": 0,
+    "composition": "картофель, лук репчатый, пшеничная мука, яйца, холодная вода, соль, сливочное масло, соль"
   },
   {
-    "id": 2,
-    "imageUrl": "https://pic.rutubelist.ru/video/96/6b/966bbf14a07c3db8af83be5f1315d7b8.jpg",
-    "name": "Цзяо-цзы",
+    "id": "2",
+    "imageUrl": "https://sun9-73.userapi.com/impg/UIXpB2cy-n9s2FhgmyRxzXhX4377aHi6B1-WSw/a9F1XvkLrVs.jpg?size=1152x832&quality=95&sign=8ec4e8ee5607ba729d1b43e2adcdf6d6&type=album",
+    "name": "Вареники с вишней",
     "types": [0],
     "sizes": [150, 250, 350],
     "price": 340,
-    "category": [0, 1, 4],
-    "rating": 0
+    "category": 3,
+    "rating": 0,
+    "composition": "вишня, сахар, кукурузный крахмал, пшеничная мука, яйца, кефир, соль"
   },
   {
-    "id": 3,
+    "id": "3",
     "imageUrl": "https://karamelcafe.ru/wp-content/uploads/a/0/1/a01810dfb8cd5a4695b7b8b22bd9af7a.jpeg",
     "name": "Хинкали",
     "types": [0, 1],
     "sizes": [150, 250, 350],
     "price": 450,
-    "category": [0, 1, 4],
-    "rating": 0
+    "category": 1,
+    "rating": 0,
+    "composition": "говядина, репчатый лук, зелень кинзы, петрушка, черный молотый перец, красный молотый перец, соль, пшеничная мука, вода"
   },
   {
-    "id": 4,
+    "id": "4",
     "imageUrl": "https://glamours.name/uploads/posts/2023-08/1692441376_glamours-name-p-manti-yeda-krasivo-1.jpg",
     "name": "Манты",
     "types": [0, 1],
     "sizes": [150, 250, 350],
     "price": 340,
-    "category": [0, 1, 4],
-    "rating": 0
+    "category": 1,
+    "rating": 0,
+    "composition": "мякоть баранины, курдючное сало, репчатый лук, зира, черный молотый перец, красный молотый перец, соль, пшеничная мука, вода, яйца"
   },
   {
-    "id": 5,
-    "imageUrl": "https://uzbek-culinar.ru/wp-content/uploads/b/0/6/b06d323c11ec47b4f7c5402157f6a074.jpeg",
-    "name": "Равиоли с мясом",
-    "types": [0],
+    "id": "5",
+    "imageUrl": "https://sun9-28.userapi.com/impg/qq-4CC-GV210YK_Uzzg4yDoF1XT66Pymm5MBzw/R5vSOqOOYPw.jpg?size=1152x832&quality=95&sign=cf6ea91973feadff4a24bb4af26b7503&type=album",
+    "name": "Вареники с грибами",
+    "types": [0, 1],
     "sizes": [150, 250, 350],
     "price": 290,
-    "category": [0, 1],
-    "rating": 0
+    "category": 2,
+    "rating": 0,
+    "composition": "шампиньоны, белые грибы, лук репчатый, пшеничная мука, яйца, вода, соль, сливочное масло"
   },
   {
-    "id": 6,
+    "id": "6",
     "imageUrl": "https://static.tildacdn.com/stor6337-6635-4635-b435-353465646239/66743472.jpg",
     "name": "Гёдза",
     "types": [0],
     "sizes": [150, 250, 350],
     "price": 400,
-    "category": [0, 1],
-    "rating": 0
+    "category": 1,
+    "rating": 0,
+    "composition": "говяжий фарш, пекинская капуста, черный молотый перец, соевый соус, имбирь, чеснок, кунжутное масло, кукурузный крахмал, сахар, пшеничная мука, вода, соль, растительное масло, соль"
   },
   {
-    "id": 7,
-    "imageUrl": "https://s00.yaplakal.com/pics/pics_original/9/2/2/17999229.jpg",
-    "name": "Итальянские Тортеллини",
+    "id": "7",
+    "imageUrl": "https://sun9-53.userapi.com/impg/iv1h6OK06_oOcuBVxJkKB-30cLRzMxpV03hmIA/asZPzdsMTcc.jpg?size=1152x832&quality=95&sign=372cf505da310675df7a15ee8ea722db&type=album",
+    "name": "Вареники с капустой",
     "types": [0, 1],
     "sizes": [150, 250, 350],
     "price": 450,
-    "category": [0, 1],
-    "rating": 0
+    "category": 2,
+    "rating": 0,
+    "composition": "капуста свежая (молодая), лук репчатый, черный молотый перец, соль, пшеничная мука, молоко, яйца, холодная вода, растительное масло, соль"
   },
   {
-    "id": 8,
+    "id": "8",
     "imageUrl": "https://traveltimes.ru/wp-content/uploads/2022/04/knedl.jpg",
-    "name": "Клецки",
+    "name": "Кнедлики с мясом",
     "types": [0],
     "sizes": [150, 250, 350],
     "price": 250,
-    "category": [0, 2, 3],
+    "category": 1,
+    "rating": 0,
+    "composition": "картофель, фарш из вареной свинины, сало, лук репчатый, зелень, яйца, пшеничная мука, молоко, соль, черный молотый перец, растительное масло"
+  },
+  {
+    "id": "9",
+    "imageUrl": "https://sun9-76.userapi.com/impg/56x3M7u71-GOf-fHCk_7V3XcsCmvXuBwNm5dgg/mkP074Ersys.jpg?size=1152x832&quality=95&sign=a0c0a368a4abb343a1ee1de05b0e631a&type=album",
+    "name": "Вареники с творогом",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": 3,
+    "rating": 0,
+    "composition": "творог, сахар, яйца, пшеничная мука, теплая вода, соль"
+  },
+  {
+    "id": "10",
+    "imageUrl": "https://sun9-31.userapi.com/impg/viWvDIlR3jV_VJjTT_o97qWBksmqcf84K4XYPg/cEMrt4_0ifY.jpg?size=1152x832&quality=95&sign=e035d11479bca89e319b9b0c0e7003d5&type=album",
+    "name": "Жареные пельмени",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": 1,
+    "rating": 0,
+    "composition": "говяжий фарш, свиной фарш, лук репчатый, соль, кипяток, яйца, пшеничная мука, черный молотый перец, чеснок, сливочное масло, твердый сыр"
+  },
+  {
+    "id": "11",
+    "imageUrl": "https://sun9-1.userapi.com/impg/u2eNpNWWwj5-ZRTya_ojoLkXuv9jeCLl6ozkBA/4a4ZDJXu5rw.jpg?size=1088x896&quality=95&sign=ab10fe283191bb0d64a17f4a1f5e78dd&type=album",
+    "name": "Пельмени с лососем",
+    "types": [0, 1],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": 1,
+    "rating": 0,
+    "composition": "лосось, лук репчатый, соль, яйца, молоко, пшеничная мука, черный молотый перец, чеснок, растительное масло"
+  },
+  {
+    "id": "12",
+    "imageUrl": "https://attuale.ru/wp-content/uploads/2018/04/Mors-klyukvennyi-.jpg",
+    "name": "Клюквенный морс",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": 4,
+    "rating": 0,
+    "composition": "замороженная клюква, брусника, сахар, вода"
+  },
+  {
+    "id": "13",
+    "imageUrl": "https://grodno24.com/assets/images/2022/11/vishsok.jpg",
+    "name": "Компот из вишни",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": 4,
+    "rating": 0,
+    "composition": "вишня, сахар, вода, лимонная кислота"
+  },
+  {
+    "id": "14",
+    "imageUrl": "https://zhenomaniya.ru/wp-content/uploads/2020/07/3-19.jpg",
+    "name": "Газировка Coca-Cola",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": 4,
     "rating": 0
+  },
+  {
+    "id": "15",
+    "imageUrl": "https://missbagira.ru/images/bagira/2016/07/lim.jpg",
+    "name": "Лимонад",
+    "types": [0],
+    "sizes": [150, 250, 350],
+    "price": 250,
+    "category": 4,
+    "rating": 0,
+    "composition": "лимоны, апельсины, сахар, холодная вода, свежая мята"
   }
 ]

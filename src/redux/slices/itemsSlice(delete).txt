@@ -1,0 +1,104 @@
+// import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+// import Axios from "axios";
+// import { RootState } from "../store";
+// import { CartItem } from "./cartSlice/typeCarts";
+// import { SortProps } from "./filterSlice/typeFilter";
+
+// export type ProductsProps = {
+//   currentPage: number;
+//   category: string;
+//   sortBy: string;
+//   sortOrder: string;
+//   search: string;
+// };
+// // ---> замена на --->
+// // Когда все свойства строчки и значения строчки
+// //type ProductsProps = Record<string, string>; --->  упрощает код
+
+// //создание асинхронного элемента
+// export const fetchProducts = createAsyncThunk<
+//   ItemsProps[], // возвращаемые данные
+//   ProductsProps // входящие данные
+// >(
+//   "products/fetchProductsStatus",
+//   //async ({ currentPage, category, sort, sortOrder, search }: Record<string, string>) => {
+//   async ({ currentPage, category, sortBy, sortOrder, search }) => {
+//     const { data } = await Axios.get<ItemsProps[]>(
+//       `https://66028e549d7276a755538691.mockapi.io/items?${search}&page=${currentPage}&limit=4&${category}&sortBy=${sortBy}&order=${sortOrder}`
+//     );
+//     if (search) {
+//       const { data } = await Axios.get<ItemsProps[]>(
+//         `https://66028e549d7276a755538691.mockapi.io/items?${search}`
+//       );
+//       return data;
+//     }
+
+//     // console.log(thunkApi);
+
+//     return data;
+//     // return data as CartItem[];
+//   }
+// );
+
+// type ItemsProps = {
+//   id: string;
+//   name: string;
+//   price: number;
+//   count: number;
+//   sizes: number[];
+//   imageUrl: string;
+//   types: number[];
+// };
+
+// // статус в виде объекта, ключ всегда с большой буквы
+// enum Status {
+//   LOADING = "loading",
+//   SUCCESS = "success",
+//   ERROR = "error",
+// }
+
+// interface ItemsPropsSlice {
+//   items: ItemsProps[];
+//   webStatus: Status;
+// }
+
+// const initialState: ItemsPropsSlice = {
+//   items: [],
+//   webStatus: Status.LOADING,
+// };
+
+// const itemsSlice = createSlice({
+//   name: "products",
+//   initialState,
+//   reducers: {
+//     setItems(state, action: PayloadAction<ItemsPropsSlice>) {
+//       state.items = action.payload.items;
+//     },
+
+//     // setIsLoading(state, action) {
+//     //   state.isLoading = action.payload;
+//     // },
+//   },
+//   extraReducers: (builder) => {
+//     // передается логика для асинхронных запросов, ключей
+//     builder.addCase(fetchProducts.pending, (state) => {
+//       //когда идет запрос
+//       //console.log("loading");
+//       state.webStatus = Status.LOADING;
+//     });
+//     builder.addCase(fetchProducts.fulfilled, (state, action) => {
+//       //пришел запрос
+//       //console.log(state, "okey");
+//       state.items = action.payload;
+//       state.webStatus = Status.SUCCESS;
+//     });
+//     builder.addCase(fetchProducts.rejected, (state) => {
+//       //при ошибке
+//       //console.log("error");
+//       state.webStatus = Status.ERROR;
+//     });
+//   },
+// });
+// //export const { setIsLoading } = itemsSlice.actions;
+// export const selectItems = (state: RootState) => state.itemsSlice;
+// export default itemsSlice.reducer;
