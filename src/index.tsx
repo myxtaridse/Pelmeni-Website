@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import "react-router-dom";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import { store } from "./redux/store";
 
 import "./index.css";
@@ -14,13 +14,13 @@ if (rootElem) {
   const root = ReactDOM.createRoot(rootElem);
   root.render(
     <StrictMode>
-      <BrowserRouter>
+      <HashRouter>
         <Provider
           store={store} //содружество React с Redux Toolkit через Redux React
         >
           <App />
         </Provider>
-      </BrowserRouter>
+      </HashRouter>
     </StrictMode>
   );
 }

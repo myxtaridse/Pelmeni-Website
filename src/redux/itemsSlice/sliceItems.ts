@@ -1,4 +1,4 @@
-import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { ItemsPropsSlice, Status } from "./typeItems";
 import { fetchProducts } from "./asyncActions";

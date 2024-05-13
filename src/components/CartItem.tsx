@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import plus from "../assets/img/plus.svg";
 import minus from "../assets/img/minus.svg";

@@ -6,7 +6,7 @@ export { default as Pagination } from "./Pagination";
 export { default as Search } from "./Search";
 export { default as CartItem } from "./CartItem";
 export { default as Categories } from "./Categories";
-export { default as CharacterItem } from "./CharacterItem";
+//export { default as CharacterItem } from "./CharacterItem";
 export { default as Header } from "./Header";
 export { default as PelmeniBlock } from "./Pelmeni-Block";
 export { default as Skeleton } from "./Skeleton";
