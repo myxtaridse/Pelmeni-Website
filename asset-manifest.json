@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/Pelmeni-Website/static/css/main.aeb49878.css",
-    "main.js": "/Pelmeni-Website/static/js/main.8eb54171.js",
-    "Cart.js": "/Pelmeni-Website/static/js/Cart.008abf0e.chunk.js",
+    "main.css": "/Pelmeni-Website/static/css/main.5edca93d.css",
+    "main.js": "/Pelmeni-Website/static/js/main.1960a9ae.js",
+    "Cart.js": "/Pelmeni-Website/static/js/Cart.289d8db7.chunk.js",
     "Product.js": "/Pelmeni-Website/static/js/Product.f6af5ca5.chunk.js",
     "static/media/cartEmpty.png": "/Pelmeni-Website/static/media/cartEmpty.9a469a34a39450642362.png",
     "static/media/Z0H0mXcBY0Q.jpg": "/Pelmeni-Website/static/media/Z0H0mXcBY0Q.99c584e8de87682e0301.jpg",
@@ -17,13 +17,13 @@
     "static/media/close-circle-fill.svg": "/Pelmeni-Website/static/media/close-circle-fill.5d99651c24956e3c9f93d0b871b88639.svg",
     "static/media/minus.svg": "/Pelmeni-Website/static/media/minus.3a8ed8adc02e128b0c31e5f6e763e9cf.svg",
     "static/media/menu.svg": "/Pelmeni-Website/static/media/menu.1f9655b42d026db273abdc8a74d28167.svg",
-    "main.aeb49878.css.map": "/Pelmeni-Website/static/css/main.aeb49878.css.map",
-    "main.8eb54171.js.map": "/Pelmeni-Website/static/js/main.8eb54171.js.map",
-    "Cart.008abf0e.chunk.js.map": "/Pelmeni-Website/static/js/Cart.008abf0e.chunk.js.map",
+    "main.5edca93d.css.map": "/Pelmeni-Website/static/css/main.5edca93d.css.map",
+    "main.1960a9ae.js.map": "/Pelmeni-Website/static/js/main.1960a9ae.js.map",
+    "Cart.289d8db7.chunk.js.map": "/Pelmeni-Website/static/js/Cart.289d8db7.chunk.js.map",
     "Product.f6af5ca5.chunk.js.map": "/Pelmeni-Website/static/js/Product.f6af5ca5.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.aeb49878.css",
-    "static/js/main.8eb54171.js"
+    "static/css/main.5edca93d.css",
+    "static/js/main.1960a9ae.js"
   ]
 }
